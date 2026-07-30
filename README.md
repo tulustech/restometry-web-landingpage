@@ -1,5 +1,47 @@
 # restometry-www-landingpage
 
+## Deployment
+
+Deployments run only for direct branch builds of `deploy/<environment>`. Jenkins does not deploy pull-request builds, including pull requests whose source branch is a deploy branch. A merged pull request deploys when its merge reaches the corresponding deploy branch.
+
+Jenkins requires only Git, an SSH client/agent, and rsync. Install these Jenkins plugins: Pipeline, Git, SSH Agent, Pipeline Utility Steps, AnsiColor, Timestamper, and Workspace Cleanup. Configure the SSH private-key credential `dev0-deploy-key`, or select another credential through the `SSH_CREDENTIALS_ID` build parameter.
+
+The deployment host requires Docker Engine, Docker Compose v2 (`docker compose`), SSH access, and Docker permissions for the deployment user. Jenkins does not run Node, npm, Docker, or Docker Compose; Docker builds the application on the deployment host.
+
+Each branch environment has a `deploy/<environment>.yml` file with these values:
+
+```yaml
+deploy_hostname: deploy.example.com
+deploy_username: deploy
+deploy_workspace: /srv/restometry-landing
+deploy_project: restometry-landing
+env_file: .env
+```
+
+Provision the persistent remote files manually before the first deployment. The pipeline and deployment script never create, delete, or replace `common/`:
+
+```sh
+export DEPLOY_WORKSPACE=/path/from/deploy-config
+mkdir -p "$DEPLOY_WORKSPACE/common/data" "$DEPLOY_WORKSPACE/common/public"
+cp /path/to/production.env "$DEPLOY_WORKSPACE/common/.env"
+chmod 600 "$DEPLOY_WORKSPACE/common/.env"
+```
+
+The remote layout is:
+
+```text
+<deploy_workspace>/
+  common/
+    .env
+    data/
+    public/
+  build/
+  current/
+  previous/
+```
+
+`build/`, `current/`, and `previous/` are release directories. `common/.env`, `common/data/`, and `common/public/` are persistent. `APP_PORT` and `NEXT_PUBLIC_SITE_URL` are supplied by `common/.env`. Files in `common/public/` are copied into the Next.js image during deployment, so asset changes require a redeployment.
+
 
 Restometry – Feature List
 Phase 1
@@ -75,4 +117,3 @@ Performance Overview (Basic)
 •	Notes about performance
 
 Why: Even minimal tracking helps managers spot unreliable staff.
-

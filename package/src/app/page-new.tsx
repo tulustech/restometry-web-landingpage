@@ -4,8 +4,6 @@ import {
   Calculator, 
   BarChart3, 
   DollarSign,
-  Users,
-  TrendingUp,
   CheckCircle 
 } from "lucide-react";
 
@@ -35,7 +33,7 @@ export default function Home() {
             <span className="text-blue-600">for Restaurants</span>
           </h2>
           <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-            Optimize your restaurant's labor costs with intelligent scheduling, real-time tracking, 
+            Optimize your restaurant&apos;s labor costs with intelligent scheduling, real-time tracking,
             and actionable insights that help you maintain profitability while ensuring adequate staffing.
           </p>
           <div className="flex justify-center gap-4">
@@ -171,7 +169,7 @@ export default function Home() {
                 <h4 className="text-2xl font-bold text-slate-900">Simple Dashboard</h4>
               </div>
               <p className="text-slate-600 mb-6">
-                Get a quick snapshot of your restaurant's performance with today's sales, 
+                Get a quick snapshot of your restaurant&apos;s performance with today&apos;s sales,
                 scheduled labor costs, and important notifications in one view.
               </p>
               <ul className="space-y-3">
@@ -201,7 +199,7 @@ export default function Home() {
             </div>
             <p className="text-slate-600 mb-6">
               Manually enter and update daily sales figures to ensure accurate labor cost calculations, 
-              even when POS data integration isn't available.
+              even when POS data integration isn&apos;t available.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ul className="space-y-3">
