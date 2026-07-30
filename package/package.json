@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "test": "node --test --test-concurrency=1"
   },
   "dependencies": {
     "lucide-react": "^0.525.0",

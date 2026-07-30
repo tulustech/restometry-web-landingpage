@@ -1,20 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Lobster, Poppins } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const lobster = Lobster({
+  variable: "--font-lobster",
   subsets: ["latin"],
+  display: "swap",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
-  title: "Restometry - Smart Labor Management for Restaurants",
-  description: "Optimize your restaurant's labor costs with intelligent scheduling, real-time tracking, and actionable insights. Save 30% on labor costs with our Phase 1 features.",
+  title: "Restometry | Restaurant labor costs, under control",
+  description: "Plan restaurant staffing with expected sales and scheduled labor in one clear view. Join Restometry early access for independent restaurants.",
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({
@@ -24,11 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${poppins.variable} ${lobster.variable}`}>{children}</body>
     </html>
   );
 }

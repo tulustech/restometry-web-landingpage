@@ -1,309 +1,254 @@
-import { 
-  Calendar, 
-  Clock, 
-  Calculator, 
-  BarChart3, 
-  DollarSign,
-  CheckCircle 
-} from "lucide-react";
+import Image from "next/image";
+
+const waitlistUrl = "https://forms.gle/oamr5eenUXN9bwdu7";
+
+const pressures = [
+  ["01", "Build the right schedule", "Match the shift to the day you expect, before names go on the board."],
+  ["02", "Protect the margin", "See scheduled labor beside expected sales while there is still time to adjust."],
+  ["03", "Put the spreadsheet away", "Keep the daily numbers in one clear view instead of rebuilding the same workbook."],
+];
+
+const benefits = [
+  ["Plan with the full picture", "See sales, scheduled hours, and labor cost together before the shift starts."],
+  ["Catch pressure early", "Notice when a shift looks heavy or thin while you can still make a calm change."],
+  ["Close the day cleanly", "Record actual sales and attendance once, without chasing notes across spreadsheets."],
+];
+
+const workflow = [
+  ["Set the day", "Add expected sales and check the schedule by role."],
+  ["Check the shift", "Review the labor picture and make the call before service."],
+  ["Close the loop", "Enter actual sales and attendance so tomorrow starts with better context."],
+];
+
+function WaitlistLink({ label = "Join the waitlist" }: { label?: string }) {
+  return (
+    <a
+      className="button button-primary"
+      href={waitlistUrl}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={`${label} (opens in a new tab)`}
+    >
+      {label}
+    </a>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-slate-900">Restometry</h1>
-              <span className="ml-2 text-sm text-slate-600 bg-blue-100 px-2 py-1 rounded-full">Phase 1</span>
-            </div>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium">
-              Get Started
-            </button>
-          </div>
+    <>
+      <header className="site-header">
+        <div className="shell header-inner">
+          <a className="brand" href="#top" aria-label="Restometry home">
+            <Image
+              src="/restometry-logo.png"
+              alt="Restometry shield logo"
+              width={48}
+              height={48}
+              priority
+            />
+            <span className="wordmark">Restometry</span>
+          </a>
+          <nav aria-label="Main navigation">
+            <a href="#pressure">Why Restometry</a>
+            <a href="#preview">Preview</a>
+            <a href="#benefits">Benefits</a>
+            <a href="#how-it-works">How it works</a>
+          </nav>
+          <WaitlistLink />
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-5xl font-bold text-slate-900 mb-6">
-            Stop Overstaffing.<br />
-            <span className="text-blue-600">Start Saving.</span>
-          </h2>
-          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-            Restometry helps restaurant owners track the #1 KPI that matters: <strong>labor cost as % of sales</strong>. 
-            Get immediate benefits with smart scheduling that prevents costly overstaffing.
-          </p>
-          <div className="flex justify-center gap-4">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium text-lg">
-              Get Started Today
-            </button>
-            <button className="border border-slate-300 hover:border-slate-400 text-slate-700 px-8 py-3 rounded-lg font-medium text-lg">
-              See How It Works
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Metrics */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="p-6">
-              <div className="text-3xl font-bold text-blue-600 mb-2">30%</div>
-              <div className="text-slate-600">Target Labor Cost Threshold</div>
+      <main id="top" data-restometry-page="landing">
+        <section className="hero control-grid" aria-labelledby="hero-title">
+          <div className="shell hero-grid">
+            <div className="hero-copy">
+              <p className="eyebrow"><span aria-hidden="true" /> Labor control for independent restaurants</p>
+              <h1 id="hero-title">Know your labor cost before it costs you.</h1>
+              <p className="hero-lede">
+                Payroll pressure is real. Staffing is never certain. And you do not have
+                another hour for a spreadsheet. Restometry gives owners with 1–5 locations
+                one clear place to plan the shift and protect the margin.
+              </p>
+              <div className="hero-actions">
+                <WaitlistLink label="Join the early access waitlist" />
+                <a className="button button-secondary" href="#preview">See the early access preview</a>
+              </div>
+              <p className="quiet-note">Built for the daily decisions independent restaurant owners make.</p>
             </div>
-            <div className="p-6">
-              <div className="text-3xl font-bold text-blue-600 mb-2">5min</div>
-              <div className="text-slate-600">Daily Setup Time</div>
-            </div>
-            <div className="p-6">
-              <div className="text-3xl font-bold text-blue-600 mb-2">Instant</div>
-              <div className="text-slate-600">Overstaffing Alerts</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Features Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Phase 1 Features - Everything You Need to Start</h3>
-            <p className="text-xl text-slate-600">Five essential tools that deliver immediate benefits and prevent costly overstaffing</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Smart Scheduling */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="flex items-center mb-6">
-                <div className="bg-blue-100 p-3 rounded-lg mr-4">
-                  <Calendar className="w-6 h-6 text-blue-600" />
+            <aside className="shift-sheet" aria-label="Today’s shift control sheet">
+              <div className="sheet-header">
+                <div>
+                  <p className="sheet-label">Shift control / Thursday</p>
+                  <p className="sheet-title">Dinner service</p>
                 </div>
-                <h4 className="text-2xl font-bold text-slate-900">Smart Scheduling (Basic Version)</h4>
+                <span className="status status-review">Review</span>
               </div>
-              <p className="text-slate-600 mb-6">
-                Create shifts manually by role (waiter, cook, barista) with time-in/time-out. 
-                The system suggests recommended staff count per hour based on historical sales and warns when labor costs exceed thresholds.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Manual shift creation by role
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Staff count recommendations based on sales history
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Labor cost threshold warnings
-                </li>
-              </ul>
-              <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-                <p className="text-sm text-blue-800">
-                  <strong>Why:</strong> Immediate benefit—saves time and prevents costly overstaffing.
-                </p>
+              <dl className="sheet-numbers">
+                <div><dt>Expected sales</dt><dd>$8,400</dd></div>
+                <div><dt>Scheduled labor</dt><dd>$2,268</dd></div>
+                <div><dt>Labor / sales</dt><dd>27.0%</dd></div>
+              </dl>
+              <div className="measure" aria-hidden="true">
+                <span>Open</span><span>Prep</span><span>Rush</span><span>Close</span>
+              </div>
+              <p className="sheet-alert"><strong>Schedule check:</strong> The 5–7 PM window carries the most labor. Review it before posting.</p>
+            </aside>
+          </div>
+        </section>
+
+        <section className="pressure" id="pressure" aria-labelledby="pressure-title">
+          <div className="shell">
+            <div className="section-heading heading-split">
+              <p className="eyebrow">The part no one sees</p>
+              <div>
+                <h2 id="pressure-title">The schedule is a margin decision.</h2>
+                <p>It should not take three tabs, last week’s notes, and a late-night guess to make it.</p>
               </div>
             </div>
+            <ol className="pressure-list">
+              {pressures.map(([number, title, copy]) => (
+                <li key={number}>
+                  <span className="list-number">{number}</span>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
 
-            {/* Attendance Tracking */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="flex items-center mb-6">
-                <div className="bg-green-100 p-3 rounded-lg mr-4">
-                  <Clock className="w-6 h-6 text-green-600" />
+        <section className="preview-section control-grid" id="preview" aria-labelledby="preview-title">
+          <div className="shell">
+            <div className="section-heading preview-heading">
+              <div>
+                <p className="eyebrow">Early access preview</p>
+                <h2 id="preview-title">One shift. One labor picture.</h2>
+              </div>
+              <p>A focused home screen for the question owners ask before every service: does this schedule fit the sales we expect?</p>
+            </div>
+
+            <article className="dashboard" aria-labelledby="dashboard-title">
+              <div className="dashboard-bar">
+                <div className="dashboard-brand"><span className="logo-dot">R</span> Restometry</div>
+                <p>Thursday, July 30 <span>•</span> Main Street</p>
+              </div>
+              <div className="dashboard-body">
+                <div className="dashboard-title-row">
+                  <div><p className="sheet-label">Today’s plan</p><h3 id="dashboard-title">Dinner shift overview</h3></div>
+                  <span className="status status-ready">Ready to review</span>
                 </div>
-                <h4 className="text-2xl font-bold text-slate-900">Attendance Tracking (Basic)</h4>
-              </div>
-              <p className="text-slate-600 mb-6">
-                Manual attendance log with time-in/time-out tracking, overtime hours calculation, 
-                and exportable reports for payroll reference.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Manual time-in/time-out logging
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Overtime hours calculation
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Exportable payroll reports
-                </li>
-              </ul>
-              <div className="mt-4 p-3 bg-green-50 rounded-lg">
-                <p className="text-sm text-green-800">
-                  <strong>Why:</strong> Connects schedule planning to real-life attendance and costs.
-                </p>
-              </div>
-            </div>
+                <dl className="dashboard-totals">
+                  <div><dt>Expected sales</dt><dd>$8,400<small>Entered for today</small></dd></div>
+                  <div><dt>Scheduled hours</dt><dd>126<small>Across 18 team members</small></dd></div>
+                  <div><dt>Scheduled labor</dt><dd>$2,268<small>27.0% of expected sales</small></dd></div>
+                </dl>
 
-            {/* Labor Cost Calculator */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="flex items-center mb-6">
-                <div className="bg-purple-100 p-3 rounded-lg mr-4">
-                  <Calculator className="w-6 h-6 text-purple-600" />
+                <div className="dashboard-grid">
+                  <div className="schedule-table">
+                    <div className="panel-heading"><h4>Staffing by service window</h4><span>4 windows</span></div>
+                    <div
+                      className="table-scroll"
+                      tabIndex={0}
+                      role="region"
+                      aria-label="Staffing details by service window; scroll horizontally to view all columns"
+                    >
+                      <table>
+                        <thead><tr><th scope="col">Window</th><th scope="col">Team</th><th scope="col">Hours</th><th scope="col">Labor</th><th scope="col">Check</th></tr></thead>
+                        <tbody>
+                          <tr><th scope="row">Open / prep</th><td>5</td><td>24</td><td>$432</td><td><span className="table-state okay">Set</span></td></tr>
+                          <tr><th scope="row">Lunch</th><td>8</td><td>36</td><td>$648</td><td><span className="table-state okay">Set</span></td></tr>
+                          <tr className="attention-row"><th scope="row">Dinner rush</th><td>13</td><td>48</td><td>$864</td><td><span className="table-state attention">Review</span></td></tr>
+                          <tr><th scope="row">Close</th><td>5</td><td>18</td><td>$324</td><td><span className="table-state okay">Set</span></td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <aside className="shift-note" aria-label="Shift note">
+                    <p className="sheet-label">Shift note</p>
+                    <h4>Look at the rush before you post.</h4>
+                    <p>Dinner carries 38% of scheduled labor. Check whether all 13 people need to overlap at 5 PM.</p>
+                    <div className="mini-rule"><span>Expected sales</span><strong>$8,400</strong></div>
+                    <div className="mini-rule"><span>Planned labor</span><strong>27.0%</strong></div>
+                  </aside>
                 </div>
-                <h4 className="text-2xl font-bold text-slate-900">Labor Cost Calculator</h4>
               </div>
-              <p className="text-slate-600 mb-6">
-                Simple dashboard showing total labor cost for day/week, labor cost as % of sales, 
-                and alerts if labor % exceeds target threshold (e.g. 30%).
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Total labor cost (daily/weekly)
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Labor cost as % of sales
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Alert if exceeding target threshold
-                </li>
-              </ul>
-              <div className="mt-4 p-3 bg-purple-50 rounded-lg">
-                <p className="text-sm text-purple-800">
-                  <strong>Why:</strong> The #1 KPI restaurant owners care about is labor % vs sales.
-                </p>
-              </div>
-            </div>
+            </article>
+            <p className="preview-caption">Illustrative early access view. Your targets and staffing decisions stay yours.</p>
+          </div>
+        </section>
 
-            {/* Simple Dashboard */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="flex items-center mb-6">
-                <div className="bg-orange-100 p-3 rounded-lg mr-4">
-                  <BarChart3 className="w-6 h-6 text-orange-600" />
-                </div>
-                <h4 className="text-2xl font-bold text-slate-900">Simple Dashboard Home</h4>
-              </div>
-              <p className="text-slate-600 mb-6">
-                High-level summary with today&apos;s sales (from imported POS data), today&apos;s scheduled labor cost, 
-                labor % vs sales, and notifications (e.g. &ldquo;Tomorrow looks under-staffed&rdquo;).
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Today&apos;s sales from POS data
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Today&apos;s scheduled labor cost
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Labor % vs sales overview
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Smart notifications and alerts
-                </li>
-              </ul>
-              <div className="mt-4 p-3 bg-orange-50 rounded-lg">
-                <p className="text-sm text-orange-800">
-                  <strong>Why:</strong> Restaurant owners want a quick snapshot, not endless screens.
-                </p>
-              </div>
+        <section className="benefits" id="benefits" aria-labelledby="benefits-title">
+          <div className="shell">
+            <div className="section-heading heading-split">
+              <p className="eyebrow">What changes</p>
+              <div><h2 id="benefits-title">Less second-guessing between shifts.</h2><p>Restometry is built around the decisions you already make, not more software to manage.</p></div>
+            </div>
+            <div className="benefit-grid">
+              {benefits.map(([title, copy], index) => (
+                <article key={title}>
+                  <span className="benefit-mark" aria-hidden="true">{index + 1}</span>
+                  <h3>{title}</h3><p>{copy}</p>
+                </article>
+              ))}
             </div>
           </div>
+        </section>
 
-          {/* Daily Sales Entry */}
-          <div className="mt-12 bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
-            <div className="flex items-center mb-6">
-              <div className="bg-teal-100 p-3 rounded-lg mr-4">
-                <DollarSign className="w-6 h-6 text-teal-600" />
-              </div>
-              <h4 className="text-2xl font-bold text-slate-900">Daily Sales Entry &amp; Update</h4>
-            </div>
-            <p className="text-slate-600 mb-6">
-              Manually post daily sales figures, edit/update sales for any previous day, 
-              with validation to prevent duplicate entries. Changes reflected instantly in dashboards and labor calculations.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <ul className="space-y-3">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Manual daily sales posting
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Edit/update any previous day
-                </li>
-              </ul>
-              <ul className="space-y-3">
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Validation prevents duplicates
-                </li>
-                <li className="flex items-center text-slate-700">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                  Instant dashboard updates
-                </li>
-              </ul>
-            </div>
-            <div className="mt-4 p-3 bg-teal-50 rounded-lg">
-              <p className="text-sm text-teal-800">
-                <strong>Why:</strong> Enables accurate tracking even if POS data import is unavailable or delayed.
-              </p>
-            </div>
+        <section className="trust-fit" id="trust-fit" aria-labelledby="trust-fit-title">
+          <div className="shell trust-fit-inner">
+            <h2 id="trust-fit-title">Made for restaurants where the owner still knows the schedule.</h2>
+            <p>Restometry is built for independent teams of one to five locations, starting with labor and scheduling.</p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-3xl font-bold text-white mb-4">
-            Ready to Track Your #1 KPI?
-          </h3>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join restaurant owners who are preventing costly overstaffing and monitoring labor % vs sales with Restometry.
-          </p>
-          <button className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-3 rounded-lg font-medium text-lg">
-            Get Started Today
-          </button>
-        </div>
-      </section>
+        <section className="workflow" id="how-it-works" aria-labelledby="workflow-title">
+          <div className="shell workflow-grid">
+            <div className="section-heading workflow-intro">
+              <p className="eyebrow">A daily rhythm</p>
+              <h2 id="workflow-title">From first estimate to final number.</h2>
+              <p>Three short checks keep the day connected without turning labor planning into a desk job.</p>
+            </div>
+            <ol className="workflow-list">
+              {workflow.map(([title, copy], index) => (
+                <li key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{copy}</p></div></li>
+              ))}
+            </ol>
+          </div>
+        </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="col-span-1 md:col-span-2">
-              <h4 className="text-2xl font-bold mb-4">Restometry</h4>
-              <p className="text-slate-400 mb-4">
-                Smart labor management for restaurants. Optimize costs, improve efficiency, 
-                and focus on what matters most - your customers.
-              </p>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-4">Product</h5>
-              <ul className="space-y-2 text-slate-400">
-                <li>Features</li>
-                <li>Pricing</li>
-                <li>Support</li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-4">Company</h5>
-              <ul className="space-y-2 text-slate-400">
-                <li>About</li>
-                <li>Contact</li>
-                <li>Privacy</li>
-              </ul>
-            </div>
+        <section className="roadmap" aria-labelledby="roadmap-title">
+          <div className="shell roadmap-inner">
+            <div><p className="eyebrow">Built in the open</p><h2 id="roadmap-title">Start with labor. Earn the next step.</h2></div>
+            <ol aria-label="Restometry roadmap">
+              <li className="current"><span aria-hidden="true" /> <strong>Now</strong> Labor &amp; scheduling</li>
+              <li><span aria-hidden="true" /> <strong>Next</strong> Menu availability</li>
+              <li><span aria-hidden="true" /> <strong>Later</strong> Point-of-sale connections</li>
+            </ol>
+            <p>No inflated promises. Early access begins with the daily labor decisions independent owners need to see clearly.</p>
           </div>
-          <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
-            <p>&copy; 2025 Restometry. All rights reserved.</p>
+        </section>
+
+        <section className="closing" aria-labelledby="closing-title">
+          <div className="shell closing-inner">
+            <div><p className="eyebrow eyebrow-light">A calmer look at tomorrow</p><h2 id="closing-title">Make the schedule with the numbers in front of you.</h2></div>
+            <div><p>Join the early access list and help shape a practical labor control room for independent restaurants.</p><WaitlistLink label="Join the early access waitlist" /></div>
           </div>
+        </section>
+      </main>
+
+      <footer>
+        <div className="shell footer-inner">
+          <a className="brand footer-brand" href="#top" aria-label="Back to top">
+            <Image src="/restometry-logo.png" alt="" width={44} height={44} />
+            <span className="wordmark">Restometry</span>
+          </a>
+          <p>Measured labor decisions for independent restaurants.</p>
+          <nav aria-label="Footer navigation"><a href="#preview">Preview</a><a href="#benefits">Benefits</a><a href="#how-it-works">How it works</a></nav>
+          <p className="copyright">© 2026 Restometry</p>
         </div>
       </footer>
-    </div>
+    </>
   );
 }
