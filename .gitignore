@@ -146,3 +146,4 @@ data/*
 package/public/*
 !package/public/index.html
 !package/public/favicon.svg
+!package/public/restometry-logo.png
