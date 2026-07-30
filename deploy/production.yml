@@ -1,0 +1,6 @@
+---
+deploy_hostname: 10.130.74.174
+deploy_username: ubuntu
+deploy_workspace: /home/ubuntu/dockers/www-restometry-com/production
+deploy_project: www-restometry-com-production
+env_file: .env
