@@ -3,14 +3,14 @@ WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 
 FROM base AS dependencies
-COPY package.json package-lock.json ./
+COPY package/package.json package/package-lock.json ./
 RUN npm ci
 
 FROM base AS builder
 ARG NEXT_PUBLIC_SITE_URL
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 COPY --from=dependencies /app/node_modules ./node_modules
-COPY . .
+COPY package/ ./
 RUN npm run build
 
 FROM node:22-alpine AS runner
