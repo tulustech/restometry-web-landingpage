@@ -8,7 +8,9 @@ RUN npm ci
 
 FROM base AS builder
 ARG NEXT_PUBLIC_SITE_URL
+ARG NEXT_PUBLIC_GOOGLE_TAG_ID
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
+ENV NEXT_PUBLIC_GOOGLE_TAG_ID=$NEXT_PUBLIC_GOOGLE_TAG_ID
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY package/ ./
 RUN npm run build
