@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Lobster, Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -27,9 +28,31 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const googleTagId = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID?.trim();
+  const serializedGoogleTagId = JSON.stringify(googleTagId ?? "").replace(
+    /[<\u2028\u2029]/g,
+    (character) => `\\u${character.charCodeAt(0).toString(16).padStart(4, "0")}`,
+  );
+
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${lobster.variable}`}>{children}</body>
+      <body className={`${poppins.variable} ${lobster.variable}`}>
+        {children}
+        {googleTagId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleTagId)}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', ${serializedGoogleTagId});`}
+            </Script>
+          </>
+        ) : null}
+      </body>
     </html>
   );
 }
